@@ -1,6 +1,8 @@
 package com.example.exemplesms.BroadcastReveivers;
 
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -8,6 +10,7 @@ import android.telephony.SmsManager;
 import android.widget.Toast;
 
 import com.example.exemplesms.Utilities.Constantes;
+import com.example.exemplesms.Utilities.Fonctions;
 
 public class SendBroadcastReceiver extends BroadcastReceiver {
     @Override
@@ -21,7 +24,8 @@ public class SendBroadcastReceiver extends BroadcastReceiver {
             switch (resultCode){
 
                 case Activity.RESULT_OK:
-                    Toast.makeText(context, "SMS Envoyé", Toast.LENGTH_SHORT).show();
+                    Fonctions.getNotification(context,"Envoi SMS", "Message Envoyé");
+                    //Toast.makeText(context, "SMS Envoyé", Toast.LENGTH_SHORT).show();
                     break;
 
                 case SmsManager.RESULT_ERROR_GENERIC_FAILURE:
@@ -35,4 +39,5 @@ public class SendBroadcastReceiver extends BroadcastReceiver {
         }
 
     }
+
 }
